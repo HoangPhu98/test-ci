@@ -5,3 +5,13 @@ services:
 script: 
   - docker build -t hoangphu98/node .
   - docker images hoangphu98/node 
+
+before_deploy:
+  - docker login -u hoangphu98 -p HoangPhu98@
+
+deploy:
+  provider: script
+  script: docker push hoangphu98/node
+  on:
+    branch: master
+
